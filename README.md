@@ -91,7 +91,7 @@ class Element extends PureComponent {
   }
 }
 
-// Liste
+// List
 const List = ({ elementsById, elementIds }) => (
   <ul>
     {elementIds.map(id => (
