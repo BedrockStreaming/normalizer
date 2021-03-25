@@ -2,7 +2,7 @@
   "name": "@bedrock/normalizer",
   "version": "1.0.0",
   "description": "Data normalizer for JS objects, useful for your Redux reducers",
-  "author": "m6web",
+  "author": "Bedrock (https://www.bedrockstreaming.com/)",
   "license": "MIT",
   "main": "dist/normalizer.js",
   "module": "src/normalizer.js",

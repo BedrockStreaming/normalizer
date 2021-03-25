@@ -7,7 +7,8 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/M6Web/normalizer)
 ![NPM](https://img.shields.io/npm/l/@bedrock/normalizer)
 
-Normalizer used at [Bedrock Streaming](https://www.bedrockstreaming.com/)
+JS Data normalizer used at [Bedrock Streaming](https://www.bedrockstreaming.com/) in our React frontend apps.
+Mainly designed and produced by [@flepretre](https://github.com/flepretre)
 
 ## Installation
 
@@ -19,7 +20,7 @@ yarn add -E @bedrock/normalizer
 npm install @bedrock/normalizer
 ```
 
-Much of the application data is presented in the form of a list of entities (MEAs, programs, clips, etc.).
+Much of application data is presented in the form of a list of entities.
 In general, it is assumed that these entities never change, which is usually the case.
 
 During navigation, the application will retrieve new lists of entities.
@@ -50,16 +51,16 @@ Here, if we use [PureComponents](https://facebook.github.io/react/docs/react-api
 #### Reducer
 
 ```jsx harmony
-import { GET_ELEMENTS } from './element.actions';
-import Normalizer from '@bedrock/normalizer';
+import { GET_ELEMENTS } from "./element.actions";
+import Normalizer from "@bedrock/normalizer";
 
 export const initialState = {
   elementsById: {}, // Index of elements
-  elementIds: [], // List of ids
+  elementIds: [] // List of ids
 };
 
 // Init of normalizer
-const normalizer = new Normalizer('elementIds', 'elementsById');
+const normalizer = new Normalizer("elementIds", "elementsById");
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -79,8 +80,8 @@ export default (state = initialState, action) => {
 #### Components
 
 ```jsx harmony
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
 // Element
 class Element extends PureComponent {
@@ -101,7 +102,10 @@ const List = ({ elementsById, elementIds }) => (
 );
 
 // Connector
-const mapStateToProps = ({ elements: { elementsById, elementIds } }) => ({ elementsById, elementIds });
+const mapStateToProps = ({ elements: { elementsById, elementIds } }) => ({
+  elementsById,
+  elementIds
+});
 export default connect(mapStateToProps)(List);
 ```
 
@@ -110,21 +114,24 @@ The list is connected, so it benefits from the **pure** status of the `connect` 
 
 ## Advanced uses
 
-The third parameter of the normalizer constructor is the index key. By default it is `'id'`.
+The third parameter of the normalizer constructor is the index key. By default, it is `'id'`.
 
 The `append` method of the normalizer allows to add the ids of new elements to the list of **ids**.
 In other words, the ids of the elements present in the list of **ids** are not deleted contrary to the `set` method.
 The elements already present in the list of **ids** are ignored.
 
 The `append` and `set` methods accept a second parameter. The latter allows to specify a path for the storage of ids.
-For example, MEAs are organized by services, so we use the `serviceCode` as a path to store ids by service
 
 It is possible to define a method via the `shouldElementBeUpdated()` function, which determines whether or not an element should be updated.
 
 Example:
 
 ```jsx harmony
-const programByFolderNormalizer = new Normalizer('programIdByFolder', 'simpleProgramsById').shouldElementBeUpdated(
-  (element, newElement) => element.parent_context.highlighted !== newElement.parent_context.highlighted,
+const programByFolderNormalizer = new Normalizer(
+  "programIdByFolder",
+  "simpleProgramsById"
+).shouldElementBeUpdated(
+  (element, newElement) =>
+    element.parent_context.highlighted !== newElement.parent_context.highlighted
 );
 ```
