@@ -1,11 +1,11 @@
-# `@bedrock/normalizer`
+# `@m6web/normalizer`
 
 [![Continous Integration](https://github.com/M6Web/normalizer/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/M6Web/normalizer/actions/workflows/continuous-integration.yml)
-![npm](https://img.shields.io/npm/v/@bedrock/normalizer)
+![npm](https://img.shields.io/npm/v/@m6web/normalizer)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@m6web/normalizer)
-![npm](https://img.shields.io/npm/dy/@bedrock/normalizer)
+![npm](https://img.shields.io/npm/dy/@m6web/normalizer)
 ![GitHub last commit](https://img.shields.io/github/last-commit/M6Web/normalizer)
-![NPM](https://img.shields.io/npm/l/@bedrock/normalizer)
+![NPM](https://img.shields.io/npm/l/@m6web/normalizer)
 
 JS Data normalizer used at [Bedrock Streaming](https://www.bedrockstreaming.com/) in our React frontend apps.
 Mainly designed and produced by [@flepretre](https://github.com/flepretre)
@@ -13,11 +13,11 @@ Mainly designed and produced by [@flepretre](https://github.com/flepretre)
 ## Installation
 
 ```shell script
-yarn add -E @bedrock/normalizer
+yarn add -E @m6web/normalizer
 ```
 
 ```shell script
-npm install @bedrock/normalizer
+npm install @m6web/normalizer
 ```
 
 Much of application data is presented in the form of a list of entities.
@@ -52,7 +52,7 @@ Here, if we use [PureComponents](https://facebook.github.io/react/docs/react-api
 
 ```jsx harmony
 import { GET_ELEMENTS } from "./element.actions";
-import Normalizer from "@bedrock/normalizer";
+import Normalizer from "@m6web/normalizer";
 
 export const initialState = {
   elementsById: {}, // Index of elements
